@@ -1,312 +1,323 @@
-# PRD — Warung Kopie Sarkawie
+# PRD — Website Pemesanan Toko SRC / Warung Masakan Jawa
 
-| Informasi | Nilai |
+| Informasi | Keterangan |
 | --- | --- |
-| Produk | Website pemesanan dan eksplorasi kopi Warung Kopie Sarkawie |
-| Versi dokumen | 0.1 — Draft untuk diskusi tim dan mitra |
-| Tanggal | 19 September 2026 |
-| Platform | Website responsif berbasis Laravel |
-| Pengguna | Customer, barista, dan admin/pemilik |
-| Status implementasi | Dokumen kebutuhan; bukan daftar fitur yang sudah tersedia |
+| Nama kerja produk | Website Toko SRC / Warung Masakan Jawa |
+| Versi dokumen | 1.0 — Draft untuk bahan proposal dan diskusi mitra |
+| Tanggal | 18 Oktober 2026 |
+| Platform | Website responsif, diutamakan nyaman digunakan lewat ponsel |
+| Pengguna utama | Pelanggan dan pengelola warung |
+| Status | Rancangan kebutuhan; fitur di dokumen ini belum tentu sudah dibuat |
 
-## 1. Ringkasan produk
+> **Catatan nama:** “Toko SRC” dan “warung masakan Jawa” masih dipakai sebagai nama kerja sesuai arahan tim. Pastikan nama resmi mitra dan apakah toko SRC dan warung makan adalah satu usaha sebelum proposal final.
 
-Website ini membantu pelanggan melihat menu, menemukan kopi sesuai selera, memesan untuk diambil di kedai, dan mengoleksi origin kopi yang pernah dibeli melalui Coffee Passport. Pelanggan mendapatkan poin yang dapat digunakan untuk reward. Barista mengelola antrean pesanan, sementara admin mengelola katalog, reward, dan ringkasan transaksi.
+## 1. Ringkasan
 
-Penjelasan sederhananya: **pilih kopi yang cocok → pesan → ambil kopi → koleksi origin → kumpulkan poin → coba kopi lain.**
+Produk yang diusulkan adalah website untuk melihat menu warung, mencari pilihan makan sesuai anggaran dan selera, lalu mengirim pesanan untuk dikonfirmasi penjual. Pengelola warung memperbarui menu dan ketersediaan serta memproses pesanan dari satu halaman.
 
-Pembeda yang ingin dibangun adalah hubungan antara rekomendasi rasa dan eksplorasi origin. Find Your Coffee membantu pelanggan menentukan pilihan pertama, sedangkan Coffee Passport memberi alasan untuk kembali dan mencoba origin lain. Ini merupakan arah produk, bukan klaim bahwa fitur tersebut belum pernah dibuat oleh bisnis lain.
+Gagasan utamanya sederhana:
 
-## 2. Masalah dan tujuan
+> **“Uang makan saya segini. Saya ingin makan seperti ini. Pilihan yang tersedia apa?”**
 
-Masalah berikut masih berupa hipotesis dari diskusi konsep dan perlu divalidasi melalui wawancara dengan mitra serta pelanggan:
+Fitur pembeda yang diusulkan adalah **Cari Makan Sesuai Budget**. Pelanggan dapat menentukan batas uang, memilih apakah mencari makanan lengkap atau lauk saja, menyertakan minuman jika mau, lalu melihat kombinasi menu yang memenuhi pilihan itu. Pelanggan juga tetap dapat memilih sendiri melalui menu biasa.
 
-| Hipotesis masalah | Respons produk | Hasil yang diharapkan |
+Website menjadi kanal tambahan. Pelanggan yang datang langsung tetap bisa memesan secara lisan. Sistem paling berguna untuk pelanggan yang ingin melihat pilihan sebelum datang, menghitung total lebih dahulu, atau mengirim pesanan saat sedang berada di kampus, kantor, atau rumah.
+
+## 2. Masalah yang ingin diselesaikan
+
+Masalah di bawah adalah hipotesis awal berdasarkan percakapan tim dan foto menu. Validasi kepada pemilik dan pelanggan diperlukan sebelum menganggapnya sebagai fakta.
+
+| Hipotesis | Dampak yang mungkin terjadi | Respons yang diusulkan |
 | --- | --- | --- |
-| Pelanggan awam sulit memahami pilihan kopi | Kuis preferensi dan penjelasan rasa sederhana | Pelanggan lebih mudah memilih |
-| Menu hanya menyajikan nama dan harga | Informasi origin, rasa, tingkat sangrai, dan metode seduh | Pelanggan memahami perbedaan produk |
-| Pelanggan tidak memiliki catatan kopi yang pernah dicoba | Coffee Passport | Eksplorasi origin menjadi terlihat |
-| Pelanggan kurang memiliki alasan untuk kembali | Poin dan reward | Mendorong pembelian ulang |
-| Pesanan perlu dicatat dan dipantau lebih rapi | Antrean dan status pesanan | Barista dan pelanggan mengetahui progres |
+| Pelanggan belum tahu pilihan dan harga sebelum tiba | Perlu bertanya dulu atau baru memutuskan saat di warung | Menu dan harga dapat dilihat dari ponsel |
+| Pelanggan memiliki batas uang makan | Sulit memastikan kombinasi makanan sesuai budget | Sistem menyarankan pilihan dengan total harga yang terlihat |
+| Menu atau stok berubah | Pelanggan mungkin memesan barang yang sudah habis | Pengelola dapat menandai menu tersedia atau habis |
+| Pesanan lewat pesan pribadi bisa bercampur dengan chat lain | Rincian pesanan berisiko terlewat atau perlu ditanyakan ulang | Pesanan online masuk dengan format menu, jumlah, catatan, dan waktu ambil |
+| Pelanggan ingin mengambil makanan tanpa menunggu lama | Waktu dan kesiapan pesanan belum jelas | Pesanan dikonfirmasi dan statusnya dapat dilihat |
 
-Tujuan versi awal adalah menyelesaikan satu alur transaksi dari pemilihan kopi sampai pencatatan passport dan poin, dengan operasional yang dapat dijalankan tim kedai.
+## 3. Tujuan produk
 
-## 3. Pengguna dan hak akses
+- Membantu pelanggan memutuskan makanan dan mengetahui perkiraan total sebelum memesan.
+- Menyediakan cara pesan tambahan bagi pelanggan yang belum berada di warung.
+- Membantu penjual melihat rincian pesanan online secara teratur.
+- Memudahkan penjual memberi tahu pelanggan ketika pesanan diterima, perlu diubah, atau tidak dapat dipenuhi.
+- Menguji apakah pencarian berdasarkan anggaran benar-benar bermanfaat bagi pelanggan dan mitra.
 
-| Peran | Kebutuhan | Hak akses |
+### Bukan tujuan versi awal
+
+- Menggantikan layanan langsung di warung.
+- Mengklaim bahwa website pasti menaikkan penjualan atau menghilangkan antrean.
+- Menjadi aplikasi kurir, kasir/POS, pembukuan lengkap, atau sistem pengelolaan bahan baku.
+- Menyediakan rekomendasi AI yang tidak dapat dijelaskan.
+
+## 4. Pengguna
+
+| Pengguna | Kebutuhan | Hak dan aktivitas |
 | --- | --- | --- |
-| Pengunjung | Mengenal kedai dan melihat pilihan kopi | Melihat menu, origin, dan mencoba kuis tanpa login |
-| Customer | Memesan serta melihat koleksi dan reward pribadi | Mengelola profil, pesanan sendiri, passport, saldo dan riwayat poin sendiri |
-| Barista | Menyiapkan serta menyerahkan pesanan | Melihat antrean operasional, mengubah status yang diizinkan, mencatat pembayaran di kedai |
-| Admin/pemilik | Mengelola bisnis | Mengelola menu, origin, metode seduh, ketersediaan, reward, akun staf, serta melihat laporan |
+| Pengunjung/pelanggan | Melihat menu, harga, pilihan menurut budget, dan informasi warung | Menjelajah menu dan kalkulator budget tanpa harus membuat akun |
+| Pelanggan yang memesan | Mengirim pesanan dan mengetahui konfirmasi/statusnya | Mengisi nama dan kontak seperlunya, memilih menu, jumlah, catatan, serta waktu perkiraan ambil |
+| Pengelola warung | Menjaga menu dan pesanan online tetap akurat | Masuk ke halaman pengelola, memperbarui menu/ketersediaan, menerima/menolak pesanan, memperbarui status |
 
-Akun yang dibuat lewat pendaftaran publik selalu menjadi customer. Hak staf hanya dapat diberikan admin. Barista tidak dapat mengubah harga, saldo poin, atau hak akses pengguna.
+Untuk MVP, peran pengelola cukup satu. Pemisahan menjadi admin, kasir, dan dapur hanya diperlukan jika operasional mitra memang membutuhkannya.
 
-## 4. Cakupan dan asumsi MVP
+## 5. Cakupan MVP
 
-MVP adalah versi pertama yang dapat diuji bersama mitra. Fitur berikut termasuk dalam MVP:
+### Termasuk
 
-1. Pendaftaran, login, logout, dan profil customer.
-2. Katalog menu dan Bean Explorer sederhana berupa detail origin.
-3. Find Your Coffee berbasis aturan pencocokan preferensi.
-4. Keranjang, checkout, pemesanan untuk diambil di kedai, dan riwayat/status pesanan.
-5. Dashboard antrean barista dan pencatatan pembayaran di kedai.
-6. Coffee Passport yang diperbarui dari pesanan selesai.
-7. Poin, riwayat poin, dan penukaran reward sederhana.
-8. Dashboard admin untuk katalog, reward, akun staf, dan ringkasan transaksi.
+1. Halaman beranda berisi pengenalan warung, jam buka, lokasi/kontak yang dikonfirmasi mitra, dan tombol lihat menu.
+2. Menu makanan dan minuman dengan harga, kategori, foto opsional, keterangan singkat, dan status tersedia/habis.
+3. Pencarian atau penyaringan menu berdasarkan kategori, harga, serta label makanan yang dikonfirmasi pengelola, misalnya pedas/tidak pedas atau lauk saja.
+4. Fitur Cari Makan Sesuai Budget yang memberikan kombinasi menu beserta perincian harga.
+5. Keranjang dengan jumlah item, catatan, serta total yang dihitung otomatis.
+6. Pengiriman pesanan untuk diambil di warung, termasuk nama, nomor kontak jika dibutuhkan, dan waktu ambil pilihan.
+7. Konfirmasi pengelola dan status pesanan sederhana.
+8. Halaman pengelola untuk mengubah menu, harga, ketersediaan, jam/tutup sementara, dan memproses pesanan.
+9. Ringkasan sederhana pesanan online selesai dan item yang paling sering dipesan melalui website.
 
-Asumsi kerja berikut belum merupakan kesepakatan dengan mitra:
+### Di luar MVP
 
-- Satu kedai, satu mata uang rupiah, waktu operasional mengikuti WIB.
-- Customer wajib login untuk checkout; menu dan kuis terbuka untuk pengunjung.
-- Pesanan diambil langsung di kedai. Pembayaran dilakukan di kedai melalui metode yang diterima mitra dan dicatat staf.
-- Pemesanan hanya dibuka saat jam operasional. MVP tidak menyediakan reservasi jam pengambilan di masa depan.
-- Ketersediaan diatur manual melalui status tersedia/habis, belum berdasarkan pengurangan stok gram biji.
-- Nama menu, origin, harga, alamat, jam buka, dan foto harus berasal dari mitra. Data demonstrasi diberi label contoh.
-- Produk kopi yang berhak mendapat stamp memiliki satu origin yang jelas. Blend tanpa origin tunggal tidak otomatis mendapatkan beberapa stamp.
+- Pembayaran digital otomatis, payment gateway, refund otomatis, dan integrasi QRIS/POS.
+- Pengantaran dan pelacakan kurir.
+- Pesanan terjadwal untuk beberapa hari atau langganan makan.
+- Penghitungan stok otomatis dari penjualan langsung di warung.
+- Pesan bareng untuk banyak orang dalam satu tautan.
+- Loyalty point, voucher bertingkat, referral, dan gamifikasi.
+- AI/chatbot generatif dan rekomendasi berdasarkan profil atau riwayat kompleks.
+- Aplikasi ponsel native dan banyak cabang.
 
-## 5. Di luar MVP
+## 6. Penjelasan fitur dengan bahasa sederhana
 
-- Payment gateway, verifikasi QRIS otomatis, pengembalian dana otomatis, dan integrasi POS.
-- Pengantaran, integrasi kurir, reservasi meja, dan layanan multi-cabang.
-- Pre-order dengan slot waktu, batas kapasitas per slot, dan penjadwalan hari berikutnya.
-- Manajemen bahan baku, pembelian pemasok, dan akuntansi lengkap.
-- Aplikasi Android/iOS native.
-- Rekomendasi machine learning, chatbot AI, dan profil selera otomatis dari histori pembelian.
-- XP, level, leaderboard, badge kompleks, referral, serta promo bertumpuk.
-- Notifikasi WhatsApp, SMS, email transaksi, dan push notification.
-
-Fitur-fitur tersebut dapat dibahas setelah alur inti stabil. MVP memakai satu mata uang poin loyalty; XP terpisah belum diperlukan.
-
-## 6. Alur utama
-
-### 6.1 Customer
-
-1. Customer membuka website dan melihat menu.
-2. Jika bingung, customer mengisi kuis Find Your Coffee.
-3. Sistem menampilkan hingga tiga pilihan beserta alasan rekomendasi.
-4. Customer memilih menu, metode seduh atau opsi yang tersedia, lalu jumlah.
-5. Customer login atau mendaftar, mengecek keranjang, dan memilih reward bila memenuhi syarat.
-6. Sistem memvalidasi harga, ketersediaan, jam operasional, dan reward sebelum membuat pesanan.
-7. Customer mendapat nomor pesanan dan melihat progresnya.
-8. Barista menyiapkan kopi; customer membayar dan mengambil pesanan di kedai.
-9. Setelah pembayaran tercatat dan pesanan diserahkan, staf menandai selesai.
-10. Sistem memperbarui passport serta poin, lalu menampilkan ringkasannya kepada customer.
-
-### 6.2 Barista
-
-1. Login ke dashboard staf dan melihat antrean berdasarkan waktu masuk.
-2. Memeriksa rincian menu, metode seduh, jumlah, dan catatan.
-3. Menerima pesanan dengan mengubah status menjadi Diproses, atau membatalkan dengan alasan jika belum dapat dipenuhi.
-4. Mengubah status menjadi Siap Diambil setelah minuman siap.
-5. Mencatat pembayaran yang benar-benar diterima dan menyerahkan pesanan.
-6. Mengubah status menjadi Selesai; sistem memproses passport dan poin satu kali.
-
-### 6.3 Admin
-
-1. Mengisi katalog, informasi origin, opsi seduh, harga, dan jam operasional.
-2. Mengatur ketersediaan serta reward yang berlaku.
-3. Membuat atau menonaktifkan akses staf.
-4. Memantau jumlah pesanan, nilai transaksi selesai, dan menu terlaris.
-
-## 7. Kebutuhan fungsional dan kriteria penerimaan
-
-### FR-01 — Akun dan akses
-
-- Customer dapat mendaftar menggunakan nama, email, dan password, kemudian login/logout.
-- Profil menyimpan identitas minimum yang diperlukan; nomor telepon hanya ditambahkan jika kebutuhan operasionalnya disepakati.
-- Customer hanya dapat membuka pesanan, passport, dan riwayat poin miliknya sendiri.
-- **Diterima jika:** pendaftaran tidak dapat memilih peran staf; percobaan membuka data pengguna lain atau dashboard staf ditolak oleh server.
-
-### FR-02 — Menu interaktif dan Bean Explorer
-
-- Daftar menu menampilkan nama, foto bila tersedia, harga awal, kategori, dan ketersediaan.
-- Detail kopi menampilkan origin, deskripsi rasa, roast, intensitas rasa, pilihan metode seduh, serta harga opsi yang berlaku.
-- Detail origin memuat daerah asal, cerita singkat, tasting notes, dan proses bila datanya tersedia dari mitra.
-- Pengguna dapat mencari nama menu dan memfilter kategori atau origin.
-- Istilah seperti fruity, acidity, dan body disertai penjelasan singkat yang mudah dimengerti.
-- **Diterima jika:** menu habis tidak bisa dibeli, pilihan seduh hanya menampilkan kombinasi yang valid, dan menu nonkopi tidak diwajibkan memiliki origin.
-
-### FR-03 — Find Your Coffee
-
-- Kuis singkat menanyakan preferensi manis, intensitas rasa kopi, rasa fruity/asam, dan kopi dengan/tanpa susu.
-- Jawaban manis menggambarkan rasa minuman akhir; intensitas menggambarkan rasa, bukan klaim kandungan kafein.
-- Rekomendasi memakai atribut menu dan aturan yang dapat dijelaskan, tanpa model AI eksternal.
-- Usulan awal: setiap jawaban yang cocok mendapat satu skor; jawaban tidak tahu dilewati. Menu diurutkan berdasarkan skor, kemudian nama untuk hasil seri.
-- Hanya menu aktif dan tersedia yang masuk hasil. Jika tidak ada kecocokan positif atau semua jawaban dilewati, tampilkan menu tersedia dengan label pilihan umum, bukan klaim cocok.
-- Tampilkan maksimal tiga rekomendasi dengan alasan, misalnya “rasa ringan dan menggunakan susu”.
-- Customer yang login dapat menyimpan jawaban terakhir secara eksplisit sebagai preferensi, serta mengisinya ulang.
-- **Diterima jika:** input yang sama pada katalog yang sama menghasilkan urutan yang sama, kuis tidak memaksa pembelian, dan katalog kosong menampilkan pesan yang jelas.
-
-### FR-04 — Keranjang dan checkout
-
-- Keranjang menyimpan menu, opsi seduh/varian yang tersedia, jumlah, catatan opsional, subtotal, reward, dan total.
-- Server menghitung ulang harga dan memeriksa ketersediaan saat checkout. Perubahan harga ditampilkan untuk dikonfirmasi sebelum pesanan dibuat.
-- Pesanan menyimpan salinan nama item, harga satuan, opsi, dan origin saat transaksi sehingga perubahan katalog tidak mengubah histori.
-- Tombol checkout yang terkirim berulang tidak membuat pesanan ganda untuk permintaan yang sama.
-- **Diterima jika:** keranjang kosong, jumlah tidak valid, kedai tutup, opsi tidak valid, atau menu habis ditolak dengan pesan yang dapat ditindaklanjuti; total tidak dapat diubah dari browser.
-
-### FR-05 — Status pesanan dan pembayaran
-
-Alur normal: **Masuk → Diproses → Siap Diambil → Selesai**.
-
-| Status asal | Status tujuan | Pelaku dan syarat |
+| Fitur | Maksudnya | Contoh |
 | --- | --- | --- |
-| Masuk | Diproses | Barista/admin menerima pesanan |
-| Masuk | Dibatalkan | Customer pemilik atau staf, selama belum dibayar; alasan dicatat |
-| Diproses | Siap Diambil | Barista/admin memastikan pesanan siap |
-| Diproses / Siap Diambil | Dibatalkan | Admin untuk pengecualian operasional, hanya jika belum dibayar; alasan wajib |
-| Siap Diambil | Selesai | Barista/admin; sudah lunas dan sudah diserahkan |
+| **Menu hari ini** | Daftar makanan/minuman yang dijual, harganya, dan apakah masih tersedia | Pelanggan melihat pecel tersedia, sedangkan ayam kecap sedang habis |
+| **Cari Makan Sesuai Budget** ⭐ | Pelanggan memasukkan batas uang; website menyaring atau menyusun kombinasi menu yang tidak melewati batas | “Budget Rp15.000, makan lengkap, tambah minum kalau cukup.” Website menunjukkan beberapa opsi dan totalnya |
+| **Pilih jenis pembelian** | Pelanggan menentukan apakah mencari makanan lengkap, lauk saja, atau makanan plus minuman | Jika lauknya dibeli untuk dibawa pulang dan nasi sudah ada, pilih lauk saja |
+| **Racik keranjang** | Pelanggan memilih item dan jumlah sendiri; total langsung dihitung | Pilih nasi, telur, dan es teh lalu lihat total sebelum mengirim pesanan |
+| **Filter selera** | Pelanggan menyaring berdasarkan informasi yang benar-benar diisi penjual | Pilih “tidak pedas” jika label itu sudah ditetapkan untuk menu tersebut |
+| **Pesan untuk diambil** | Pelanggan mengirim pesanan dari web dan mengambilnya di warung setelah diterima | Pesan sebelum berangkat; warung mengonfirmasi apakah pesanan dapat disiapkan |
+| **Status pesanan** | Pelanggan mengetahui tahap pesanan tanpa harus menebak | Menunggu konfirmasi → diterima/disiapkan → siap diambil atau ditolak |
+| **Menu tersedia/habis** | Pengelola mengubah status dengan satu aksi ketika stok menu berubah | Setelah ayam krispi habis, item tidak lagi dapat ditambahkan ke pesanan baru |
+| **Pesan lagi** | Pelanggan melihat riwayat sederhana dan memilih item yang sama lagi | Pesanan lama dimasukkan ke keranjang; harga dan stok terkini tetap diperiksa |
 
-- Status pembayaran terpisah: Belum Dibayar atau Lunas. Total nol karena reward dicatat sebagai lunas tanpa penerimaan uang.
-- Pembayaran tidak dapat dicatat pada pesanan yang dibatalkan. Pesanan selesai dan dibatalkan merupakan status akhir.
-- MVP tidak menyediakan pembatalan transaksi yang sudah dibayar atau refund; kasus tersebut memerlukan penanganan pemilik di luar alur aplikasi sampai kebijakannya ditetapkan.
-- Setiap perubahan status dan pencatatan pembayaran menyimpan pelaku serta waktu. Koreksi pembayaran yang salah harus dibahas sebelum penggunaan operasional.
-- **Diterima jika:** transisi tidak sah ditolak, pesanan belum lunas tidak bisa selesai, dan pelanggan dapat melihat status terbaru melalui refresh/pembaruan berkala tanpa memerlukan WebSocket.
+Fitur unik utama adalah gabungan **budget + pilihan makan lengkap/lauk saja + menu yang tersedia + jumlah total yang terlihat**. “Unik” di sini berarti fokus pembeda untuk produk tim, bukan klaim bahwa tidak ada website lain yang memiliki fungsi serupa.
 
-### FR-06 — Coffee Passport
+## 7. Cara kerja fitur budget
 
-- Passport menampilkan origin yang telah dicoba, tanggal pertama, dan jumlah pembelian yang memenuhi syarat.
-- Stamp diberikan hanya dari item kopi ber-origin pada pesanan Selesai dan Lunas.
-- Satu customer memiliki paling banyak satu stamp unik per origin. Pembelian ulang menambah riwayat, bukan stamp baru.
-- Jumlah kunjungan/pembelian origin dihitung per pesanan selesai yang mengandung origin tersebut, bukan per jumlah cangkir.
-- Pesanan dengan beberapa origin baru memberikan satu stamp untuk setiap origin unik.
-- **Diterima jika:** membuka ulang halaman atau mengirim ulang aksi selesai tidak menggandakan stamp; pesanan batal dan menu nonkopi tidak menambah stamp.
+1. Pelanggan memasukkan budget maksimal.
+2. Pelanggan memilih jenis hasil: makanan lengkap, lauk saja, atau termasuk minuman.
+3. Pelanggan boleh menambah preferensi yang datanya tersedia, seperti kategori makanan atau label pedas.
+4. Sistem mengambil hanya item aktif dan tersedia.
+5. Sistem menyusun kombinasi yang totalnya tidak melebihi budget. Harga kombinasi dan item penyusunnya ditampilkan.
+6. Pelanggan memilih hasil, mengubah jumlah/item jika mau, lalu memasukkan ke keranjang.
+7. Saat checkout, harga dan ketersediaan diperiksa lagi. Pesanan baru menjadi pasti setelah dikonfirmasi pengelola.
 
-### FR-07 — Poin dan reward
+### Aturan rekomendasi budget
 
-Usulan angka untuk prototipe, wajib dikonfirmasi mitra:
+- Sistem tidak mengarang menu, harga, atau ukuran porsi. Semua berasal dari data pengelola.
+- Hasil kombinasi mengikuti aturan menu: apakah nasi dan lauk dijual terpisah atau dalam paket.
+- Jika penjual hanya menjual paket tetap, rekomendasi memakai paket dan tambahan yang diizinkan; sistem tidak memecah harga paket.
+- Harga total tidak boleh melampaui budget yang dimasukkan.
+- Bila tidak ada kombinasi yang cocok, sistem menjelaskan pilihan termurah yang tersedia atau meminta pelanggan menaikkan budget.
+- Hasil menjelaskan rincian hitungan, misalnya “nasi RpX + telur RpY + es teh RpZ = RpN”.
+- Pilihan makanan lengkap hanya ditampilkan bila komponen nasi/lauk atau paket lengkap memang dikonfirmasi mitra.
+- Urutan hasil dapat dimulai dari kombinasi yang paling mendekati budget tanpa melewatinya, lalu variasi berdasarkan kategori. Aturan akhir perlu disesuaikan dengan menu nyata.
 
-| Aktivitas | Poin |
+## 8. Alur penggunaan
+
+### Alur pelanggan
+
+1. Membuka halaman warung dari ponsel.
+2. Melihat menu atau menggunakan Cari Makan Sesuai Budget.
+3. Memilih menu, jumlah, serta catatan yang relevan.
+4. Melihat total dan mengirim pesanan untuk diambil.
+5. Menunggu pengelola menerima atau memberi tahu perubahan.
+6. Jika diterima, datang mengambil pesanan dan membayar sesuai cara yang disepakati mitra.
+
+### Alur pengelola
+
+1. Masuk ke halaman pengelola.
+2. Memastikan menu, harga, serta ketersediaan hari itu benar.
+3. Melihat pesanan baru beserta item, jumlah, catatan, nama/kontak, dan waktu ambil.
+4. Menerima atau menolak pesanan; jika stok berubah, memberi tahu pelanggan item apa yang perlu diganti.
+5. Mengubah status ke sedang disiapkan dan siap diambil.
+6. Menandai selesai setelah pesanan diserahkan dan pembayaran diterima bila pembayaran dilakukan di tempat.
+
+### Status pesanan yang diusulkan
+
+**Menunggu konfirmasi → Diterima / Ditolak → Disiapkan → Siap diambil → Selesai**
+
+Pesanan yang ditolak menyimpan alasan sederhana, misalnya menu habis atau warung tidak dapat menerima pesanan pada waktu tersebut. Status final tidak dapat diubah oleh pelanggan.
+
+## 9. Kebutuhan fungsional dan kriteria penerimaan
+
+### FR-01 — Informasi warung
+
+- Halaman beranda memuat nama resmi, alamat/peta, jam buka, kontak, dan informasi pengambilan setelah disetujui mitra.
+- Kontak dan lokasi tidak diambil sebagai kebenaran dari foto menu; pemilik harus mengonfirmasi ulang.
+- **Diterima jika:** informasi penting mudah ditemukan dari ponsel dan jam tutup/pemesanan berhenti ditampilkan dengan jelas.
+
+### FR-02 — Katalog makanan dan minuman
+
+- Item memiliki nama, kategori, harga, keterangan opsional, foto opsional, dan status aktif/tersedia.
+- Item dapat berupa paket, lauk, makanan tambahan, atau minuman. Jenis item menentukan kombinasi yang boleh dibuat.
+- Label seperti pedas, tidak pedas, berkuah, atau lauk saja hanya digunakan jika dikonfirmasi pengelola.
+- Pengunjung dapat melihat menu tanpa login.
+- **Diterima jika:** item habis tidak dapat dibeli dan kategori tidak membuat harga atau komponen paket menjadi ambigu.
+
+### FR-03 — Pencarian budget
+
+- Pelanggan memasukkan nominal maksimal dalam rupiah dan jenis hasil yang diinginkan.
+- Sistem hanya menyarankan item dan kombinasi yang tersedia serta sesuai struktur harga yang dikonfigurasi.
+- Setiap hasil memperlihatkan nama item, harga setiap item, dan total.
+- Hasil dapat dimasukkan ke keranjang untuk diedit.
+- **Diterima jika:** total selalu sama dengan penjumlahan item, tidak melampaui budget, dan halaman memberi respons jelas ketika tidak ada hasil.
+
+### FR-04 — Keranjang dan pemesanan
+
+- Pelanggan dapat mengubah jumlah, menghapus item, menambah catatan, dan melihat total sebelum mengirim pesanan.
+- Pesanan memerlukan nama dan informasi kontak secukupnya agar pengelola dapat mengonfirmasi. Kebutuhan nomor telepon diputuskan bersama mitra.
+- Pesanan memiliki waktu pengiriman dan waktu pengambilan yang diminta pelanggan; pilihan waktu adalah permintaan, bukan jaminan sampai diterima penjual.
+- Aplikasi menampilkan nomor pesanan dan status menunggu konfirmasi setelah pesanan berhasil direkam.
+- **Diterima jika:** server menghitung harga, keranjang kosong ditolak, pesanan berulang karena tombol ditekan dua kali tidak menggandakan pesanan, dan pelanggan melihat konfirmasi bahwa pesanan belum pasti sampai disetujui.
+
+### FR-05 — Konfirmasi dan status
+
+- Pengelola dapat menerima atau menolak pesanan baru.
+- Pengelola dapat memberi status disiapkan, siap diambil, dan selesai sesuai alur yang diizinkan.
+- Penolakan memerlukan alasan; perubahan status menyimpan waktu.
+- Pelanggan dapat membuka halaman status dengan nomor pesanan dan mekanisme akses yang aman.
+- **Diterima jika:** status yang melompati langkah tidak sah ditolak dan pelanggan tidak bisa mengubah status pesanan.
+
+### FR-06 — Pengelolaan menu dan ketersediaan
+
+- Pengelola dapat menambah/mengubah harga dan deskripsi, mengaktifkan/menonaktifkan item, serta menandai tersedia/habis.
+- Pengelola dapat menutup pemesanan sementara ketika warung tutup atau sedang sibuk.
+- Perubahan harga berlaku untuk pesanan baru; pesanan yang telah dibuat mempertahankan snapshot harga saat checkout.
+- **Diterima jika:** menu yang sudah dipesan tetap terbaca di riwayat dan perubahan stok menghentikan pesanan baru untuk item tersebut.
+
+### FR-07 — Riwayat dan pesan lagi
+
+- Pelanggan dapat mencari pesanan sebelumnya menggunakan kode pesanan atau kontak yang diberikan saat pemesanan.
+- Akses riwayat tidak membuka data pelanggan lain.
+- Pesan lagi membentuk keranjang baru dan memeriksa harga serta ketersediaan terbaru.
+- **Diterima jika:** item yang habis atau harganya berubah ditandai sebelum pesanan dikirim ulang.
+
+### FR-08 — Ringkasan penjual
+
+- Pengelola melihat daftar pesanan online berdasarkan status dan waktu.
+- Ringkasan sederhana menunjukkan jumlah pesanan online selesai dan item terlaris dari pesanan website pada rentang tanggal.
+- Laporan membedakan penjualan website dari penjualan langsung yang tidak dicatat sistem.
+- **Diterima jika:** angka laporan dapat dicocokkan dengan daftar pesanan online yang selesai.
+
+## 10. Data menu yang terlihat di foto
+
+Foto papan menu yang diberikan pelanggan miring dan sisi kiri serta sebagian harga terpotong. Daftar di bawah adalah **pembacaan sementara**, bukan data katalog final.
+
+| Teks yang tampak/dugaan pembacaan | Harga yang tampak | Kepastian |
+| --- | ---: | --- |
+| Nasi campur | Rp12.000 | Nama dan harga terlihat, perlu konfirmasi apakah harga paket |
+| Nasi telur (dugaan: teks terlihat “...I TELUR”) | Rp3.000 | Nama awal terpotong; kemungkinan harga lauk/tambahan |
+| Soto ayam (dugaan: teks terlihat “...O AYAM”) | Rp10.000 | Nama belum terbaca utuh |
+| Ayam goreng (dugaan: teks terlihat “... GORENG”) | Rp6.000 | Nama awal terpotong; perlu konfirmasi bagian/porsi |
+| Ampela | Rp5.000 | Terlihat; perlu konfirmasi porsi dan cara jual |
+| Ayam krispi (dugaan: teks terlihat “...M KRISPI”) | Rp7.000 | Nama awal terpotong |
+| Ayam kecap (dugaan: teks terlihat “...M KECAP”) | Rp7.000 | Nama awal terpotong |
+| Sambal balado (dugaan: teks terlihat “...KOL BALADO”) | Tidak terbaca | Nama dan harga perlu foto/menu yang lebih jelas |
+| Pecel | Rp10.000 | Nama dan harga tampak |
+| Kopi hitam, kopi susu, teh anget, es teh, es jeruk | Harga per item tidak terbaca | Papan hanya memperlihatkan tulisan “Mulai Dari 10.000” di dekat bagian minuman; pemetaan harga tidak dapat dipastikan |
+
+Nomor WhatsApp pada papan tampak tercetak, tetapi perlu diminta langsung dan dikonfirmasi pemilik sebelum dicantumkan di produk. Foto menu tersebut juga belum memastikan apakah item-item yang terdaftar merupakan lauk saja, paket dengan nasi, atau tambahan.
+
+## 11. Asumsi awal yang harus divalidasi
+
+- Mitra mengizinkan pelanggan memesan melalui website dan mengambil di lokasi.
+- Penjual dapat membuka halaman pengelola untuk menerima pesanan serta mengubah menu habis.
+- Pelanggan dapat memesan tanpa membuat akun; identitas/kontak minimum dikumpulkan untuk konfirmasi.
+- Pembayaran MVP dilakukan saat mengambil pesanan kecuali mitra meminta cara lain.
+- Stok MVP adalah status tersedia/habis manual, bukan stok otomatis dari transaksi toko fisik.
+- Waktu ambil yang dipilih pelanggan perlu dikonfirmasi penjual sebelum dianggap disepakati.
+- Website tidak memaksa semua pembeli memakai sistem; pembelian lisan tetap berjalan sesuai praktik mitra.
+- Teknologi mengikuti proyek yang sudah ada; dokumen ini tidak menetapkan hosting, basis data, payment gateway, atau integrasi eksternal.
+
+## 12. Kebutuhan nonfungsional
+
+- **Mudah digunakan:** alur pelanggan ringkas, teks harga terbaca di layar ponsel, dan tombol pesan terlihat jelas.
+- **Aksesibilitas:** teks memiliki kontras memadai, input memiliki label, menu dapat digunakan dengan keyboard, dan status tidak dibedakan hanya dengan warna.
+- **Keamanan:** hanya pengelola terdaftar yang dapat mengubah harga, menu, status, serta pesanan. Pelanggan tidak dapat membaca data pribadi pelanggan lain.
+- **Keakuratan harga:** total dihitung di server dari harga katalog; browser tidak menjadi sumber harga final.
+- **Privasi:** hanya kumpulkan data yang dibutuhkan untuk menerima dan menyerahkan pesanan. Jangan tampilkan nomor kontak secara publik.
+- **Keandalan:** sistem menunjukkan kegagalan dengan jelas dan tidak mengaku pesanan berhasil bila penyimpanan gagal.
+- **Operasional ringan:** perubahan ketersediaan harus dapat dilakukan pengelola dengan sedikit langkah dan dari ponsel.
+
+## 13. Ukuran keberhasilan
+
+Target angka ditentukan setelah baseline dan masa uji disepakati. MVP dinilai bermanfaat bila pelanggan dapat menyelesaikan alur tanpa bantuan, pengelola dapat memproses pesanan melalui layar pesanan, dan harga/status yang terlihat sesuai keadaan warung.
+
+| Ukuran | Cara melihat |
 | --- | --- |
-| Satu pesanan selesai dan lunas | +10 |
-| Pertama kali mendapatkan satu stamp origin | +30 per origin baru |
-| Penukaran reward contoh | 100 poin untuk potongan Rp5.000 |
+| Penggunaan fitur budget | Jumlah sesi fitur budget yang menampilkan hasil dan kombinasi yang dimasukkan ke keranjang |
+| Ketepatan anggaran | Jumlah checkout dengan total sesuai rincian dan di bawah atau sama dengan budget yang diminta |
+| Pesanan berhasil dikonfirmasi | Pesanan diterima dibandingkan semua pesanan yang dikirim |
+| Pesanan selesai | Pesanan selesai dibandingkan pesanan yang diterima |
+| Akurasi ketersediaan | Pesanan yang tidak perlu ditolak karena menu ternyata habis |
+| Beban pengelola | Umpan balik pengelola tentang waktu dan langkah untuk memperbarui menu serta memproses pesanan |
 
-- Contoh: pesanan pertama berisi dua cangkir dari satu origin baru mendapat 40 poin, bukan 80. Pesanan berikutnya dari origin yang sama mendapat 10 poin.
-- Poin disimpan sebagai riwayat penambahan/pengurangan yang memiliki sumber transaksi; saldo tidak boleh negatif.
-- Poin tidak kedaluwarsa dalam MVP. Kebijakan ini masih asumsi produk.
-- MVP mendukung reward potongan nominal tetap, maksimal satu reward per pesanan, tanpa gabungan promo.
-- Potongan tidak melebihi subtotal; poin yang dibutuhkan tetap sesuai katalog reward dan ditampilkan sebelum konfirmasi.
-- Pada checkout berhasil, poin reward dipotong secara atomik. Jika checkout gagal, tidak ada pemotongan. Jika pesanan dibatalkan, poin dikembalikan tepat satu kali.
-- Poin dari pesanan yang sedang dibuat belum dapat dipakai untuk membayar reward pesanan itu sendiri.
-- Penukaran paralel tidak boleh memakai saldo yang sama dua kali. Pemenuhan pesanan, pemberian poin, dan stamp harus konsisten meski permintaan diulang.
-- **Diterima jika:** saldo kurang menolak reward, reward nonaktif tidak dapat dipakai untuk pesanan baru, transaksi batal memulihkan poin, dan reward pada histori tidak berubah saat katalog reward diedit.
+Jangan menyimpulkan peningkatan pendapatan atau berkurangnya antrean hanya dari penggunaan website; ukur terpisah bersama mitra jika itu menjadi tujuan evaluasi.
 
-### FR-08 — Dashboard barista
+## 14. Skenario uji penerimaan
 
-- Menampilkan antrean aktif, nomor pesanan, waktu masuk, nama pemesan, rincian item, catatan, total, dan status pembayaran.
-- Menyediakan filter status dan aksi sesuai transisi yang diizinkan.
-- **Diterima jika:** pesanan baru dapat ditemukan tanpa akses admin, dan aksi bersamaan dari dua staf tidak menggandakan pembayaran atau penyelesaian.
+1. Pelanggan memasukkan budget, memilih makanan lengkap, lalu hanya menerima hasil yang totalnya tidak melampaui budget.
+2. Bila menu hanya berupa lauk satuan, sistem tidak menampilkannya seolah sudah termasuk nasi.
+3. Pelanggan memasukkan budget yang tidak cukup untuk satu paket; sistem menjelaskan harga paket termurah yang tersedia.
+4. Pelanggan memilih kombinasi dan total keranjang sama dengan rincian harga yang ditampilkan.
+5. Pengelola menandai item habis; item itu tidak bisa dipesan setelah perubahan berlaku.
+6. Pelanggan mengirim pesanan; status awal menunjukkan menunggu konfirmasi, bukan langsung diterima.
+7. Pengelola menolak pesanan karena stok habis; alasan terlihat oleh pelanggan.
+8. Pelanggan meminta waktu ambil; waktu tersebut tampil sebagai permintaan sampai pengelola menerima pesanan.
+9. Harga berubah setelah pesanan sebelumnya dibuat; pesanan lama tetap mencatat harga saat dibuat, sedangkan keranjang baru memakai harga terbaru.
+10. Pengguna yang tidak masuk sebagai pengelola mencoba mengubah harga atau status pesanan; sistem menolak.
 
-### FR-09 — Pengelolaan admin
+## 15. Risiko dan pertanyaan untuk mitra
 
-- Admin dapat menambah/mengedit/menonaktifkan menu, origin, opsi seduh, dan reward.
-- Admin mengatur jam operasional serta penutupan pemesanan sementara.
-- Data katalog yang pernah dipakai transaksi dinonaktifkan, bukan dihapus dengan merusak histori.
-- Admin mengelola akun staf; penonaktifan mencabut akses staf termasuk sesi yang masih aktif.
-- **Diterima jika:** perubahan harga hanya berlaku pada transaksi baru, katalog nonaktif hilang dari pilihan checkout, dan histori tetap dapat dibaca.
-
-### FR-10 — Ringkasan bisnis
-
-- Admin dapat memilih rentang tanggal untuk melihat jumlah pesanan selesai, nilai transaksi selesai setelah potongan, pembatalan, serta menu terlaris berdasarkan kuantitas item pada pesanan selesai.
-- Nilai transaksi selesai bukan laporan laba dan tidak memasukkan pesanan batal atau pesanan yang belum selesai.
-- **Diterima jika:** hasil ringkasan dapat dicocokkan dengan rincian pesanan pada periode WIB yang sama; rentang tanpa transaksi menampilkan nilai nol.
-
-## 8. Halaman yang diperlukan
-
-| Area | Halaman |
+| Pertanyaan | Mengapa perlu dijawab |
 | --- | --- |
-| Publik | Beranda dan informasi kedai, daftar menu, detail menu, detail origin/Bean Explorer, kuis dan hasil rekomendasi, login, daftar |
-| Customer | Keranjang, checkout, detail/status pesanan, riwayat pesanan, Coffee Passport, daftar reward dan riwayat poin, profil/preferensi |
-| Barista | Antrean pesanan dan detail pesanan |
-| Admin | Ringkasan bisnis, pengelolaan menu/origin/metode seduh, reward, staf, pengaturan kedai, riwayat transaksi |
+| Apa nama resmi usaha dan apakah toko SRC serta warung makan satu usaha? | Menentukan judul, ruang lingkup, identitas visual, dan halaman informasi |
+| Apa daftar menu serta harga lengkap yang berlaku sekarang? | Foto terpotong dan beberapa harga minuman tidak terlihat |
+| Harga lauk termasuk nasi atau lauk saja? Mana yang dijual sebagai paket? | Menentukan kebenaran kalkulator budget dan keranjang |
+| Apakah ada pilihan porsi, sambal, tingkat pedas, atau catatan khusus? | Menentukan opsi yang boleh dipilih pelanggan |
+| Bagaimana pelanggan membayar dan kapan pesanan mulai dibuat? | Mencegah pesanan palsu atau pesanan yang belum dibayar dibuat terlalu dini |
+| Apakah waktu ambil dapat dipilih? Berapa lama persiapan biasanya? | Menentukan apakah fitur waktu ambil layak dijanjikan |
+| Siapa yang akan memperbarui status menu habis dan memantau pesanan? | Fitur stok/menu hanya akurat jika ada penanggung jawab |
+| Apakah pesanan dibatasi jumlahnya saat jam ramai? | Menghindari terlalu banyak pesanan pada waktu yang sama |
+| Apa alamat, jam buka, nomor kontak, serta foto yang boleh dipakai? | Informasi harus benar dan penggunaannya diizinkan |
+| Apa rubrik dan tenggat tugas, serta fitur mana yang harus didemonstrasikan? | Menjaga cakupan proyek sesuai kebutuhan akademik dan kapasitas tim |
 
-Tampilan mengutamakan penggunaan lewat ponsel. Aksi utama harus jelas, harga mudah ditemukan, dan istilah kopi dijelaskan dengan bahasa sederhana. Status kosong, loading, gagal, habis, dan kedai tutup harus memiliki pesan yang membantu pengguna melanjutkan.
+## 16. Tahapan pengerjaan yang disarankan
 
-## 9. Data inti
-
-Bagian ini adalah kebutuhan informasi, bukan skema database final.
-
-| Data | Informasi utama |
+| Tahap | Hasil |
 | --- | --- |
-| Pengguna | Identitas, kredensial, peran, status akun |
-| Preferensi kopi | Jawaban kuis terakhir yang disimpan customer |
-| Origin | Nama, daerah, cerita, tasting notes, proses, status aktif |
-| Menu dan opsi | Nama, kategori, origin opsional, profil rasa, harga, metode seduh/varian, ketersediaan |
-| Pesanan dan item | Pemilik, nomor, snapshot item/harga/origin, jumlah, potongan, total, status, waktu |
-| Pembayaran | Pesanan, jumlah diterima, metode, waktu, staf pencatat |
-| Riwayat status | Pesanan, status asal/tujuan, pelaku, waktu, alasan |
-| Passport | Customer, origin unik, pesanan pertama, tanggal pertama dan histori terkait |
-| Transaksi poin | Customer, nilai positif/negatif, alasan, sumber unik, waktu |
-| Reward dan penukaran | Nama, biaya poin, nominal potongan, status, snapshot penukaran, pesanan terkait |
-| Pengaturan kedai | Jam operasional dan status penerimaan pesanan |
+| 1. Validasi mitra | Nama, menu, harga, paket, alur pesanan, pembayaran, dan penanggung jawab disepakati |
+| 2. Katalog dan halaman pengelola | Pengelola dapat memperbarui item serta status tersedia/habis |
+| 3. Pengalaman pelanggan | Halaman menu, filter, kalkulator budget, dan keranjang |
+| 4. Pesanan | Kirim pesanan, konfirmasi, perubahan status, serta halaman pengambilan |
+| 5. Uji coba terbatas | Skenario penerimaan diuji bersama pelanggan dan pengelola; masalah operasional dicatat |
 
-## 10. Kebutuhan nonfungsional
+Urutan pengerjaan akhir mengikuti tenggat tugas dan kesediaan mitra. Kalkulator budget baru dapat dibuat secara akurat setelah jenis paket, item satuan, dan harga dikonfirmasi.
 
-- **Keamanan:** pemeriksaan hak akses dilakukan di server; password disimpan dengan hashing, formulir memiliki perlindungan CSRF, input divalidasi, serta login dan checkout memiliki pembatasan permintaan.
-- **Privasi:** customer hanya melihat data sendiri; staf hanya melihat data yang diperlukan untuk pelayanan. Kredensial, rahasia aplikasi, dan data pelanggan tidak dimasukkan ke repository.
-- **Konsistensi:** pesanan, penukaran reward, passport, dan poin tidak boleh tercatat setengah selesai. Operasi berulang atau bersamaan harus aman dari duplikasi.
-- **Kegunaan:** alur utama dapat dipakai pada lebar layar 360 piksel tanpa gulir horizontal, input memiliki label, navigasi dapat memakai keyboard, dan status tidak dibedakan hanya dengan warna.
-- **Kinerja:** target awal halaman menu dan detail pesanan dapat digunakan dalam tiga detik pada lingkungan uji yang disepakati; kondisi jaringan, perangkat, dan volume data dicatat saat pengukuran.
-- **Pemulihan:** sebelum penggunaan nyata, tentukan penanggung jawab backup database dan uji pemulihan. Kehilangan koneksi tidak boleh menampilkan checkout berhasil jika pesanan belum tersimpan.
-- **Pemeliharaan:** gunakan aplikasi Laravel yang tersedia. Pilihan database, frontend, hosting, dan layanan tambahan ditetapkan pada perancangan teknis, bukan diasumsikan telah disepakati dalam PRD ini.
+## 17. Ringkasan untuk presentasi
 
-## 11. Ukuran keberhasilan
+> “Kami mengusulkan website pemesanan untuk membantu pelanggan melihat menu dan harga sebelum datang, serta mencari pilihan makan yang sesuai dengan anggaran. Pelanggan dapat mengirim pesanan untuk dikonfirmasi warung, sedangkan pengelola memperbarui ketersediaan dan memproses pesanan dari satu halaman. Pembelian langsung tetap dilayani. Manfaatnya akan diuji bersama mitra, terutama apakah pencarian budget dan pencatatan pesanan online benar-benar membantu.”
 
-MVP dianggap siap untuk demonstrasi jika alur customer sampai passport/reward dapat dijalankan, batas hak akses bekerja, dan seluruh kriteria penerimaan kritis lolos pengujian.
+## 18. Prompt untuk Claude: buat proposal dari PRD ini
 
-Untuk pilot bersama mitra, ukur metrik berikut. Target bisnis ditetapkan setelah ada baseline; dokumen ini belum menjanjikan peningkatan penjualan.
+Salin prompt berikut setelah melampirkan atau menempelkan PRD ini:
 
-| Metrik | Definisi |
-| --- | --- |
-| Penyelesaian kuis | Jumlah sesi kuis selesai dibagi sesi kuis dimulai |
-| Penggunaan rekomendasi | Sesi hasil kuis yang menambahkan rekomendasi ke keranjang dibagi sesi hasil kuis |
-| Keberhasilan checkout | Percobaan checkout yang menghasilkan pesanan unik dibagi percobaan checkout |
-| Penyelesaian pesanan | Pesanan selesai dibagi seluruh pesanan dibuat dalam kelompok periode pengamatan yang sama |
-| Pembelian ulang 30 hari | Customer dengan pembelian berikutnya dalam 30 hari dari pesanan pertama; hanya hitung customer yang telah memiliki masa observasi penuh |
-| Eksplorasi origin | Jumlah origin unik per customer yang memiliki minimal satu pesanan selesai |
-| Keandalan loyalty | Jumlah kasus poin/stamp ganda atau saldo negatif; target nol |
+```text
+Buat proposal proyek berbahasa Indonesia berdasarkan PRD terlampir untuk tugas kelompok dengan mitra Toko SRC / warung masakan Jawa.
 
-Peristiwa kuis dimulai/selesai, penambahan rekomendasi, dan checkout perlu dicatat secara minimal tanpa memuat jawaban sensitif atau kredensial. Implementasi analytics eksternal tidak diwajibkan.
+Gunakan hanya fakta yang tercantum dalam PRD. Jangan mengarang data mitra, alamat, harga, jumlah pelanggan, hasil survei, atau klaim bahwa sistem pasti meningkatkan penjualan. Tandai setiap asumsi dan pertanyaan yang belum terjawab sebagai hal yang perlu divalidasi.
 
-## 12. Tahapan pengerjaan
+Jelaskan masalah, alasan sistem dibutuhkan meski pelanggan tetap bisa membeli langsung, manfaat untuk pelanggan dan pengelola, solusi yang diusulkan, alur penggunaan, fitur MVP, pembeda Cari Makan Sesuai Budget, batasan sistem, kebutuhan pengguna, risiko, tahapan pengerjaan, dan cara mengukur keberhasilan. Terangkan dengan bahasa yang mudah dipahami oleh dosen dan mitra UMKM. Bedakan fitur MVP dari fitur yang ditunda. Jangan menyebut fitur sebagai unik di seluruh dunia; sebut sebagai pembeda yang diusulkan untuk proyek ini.
 
-| Tahap | Hasil yang harus tersedia sebelum lanjut |
-| --- | --- |
-| 1. Validasi mitra | Menu dan origin nyata, aturan pembayaran, pengambilan, pembatalan, jam buka, dan reward disepakati |
-| 2. Fondasi | Akun/peran, katalog, origin, serta pengelolaan admin dasar |
-| 3. Transaksi | Keranjang, checkout, antrean barista, pembayaran, dan status pesanan berjalan dari awal sampai akhir |
-| 4. Pembeda produk | Find Your Coffee, Coffee Passport, poin, dan reward terhubung ke transaksi |
-| 5. Uji dan pilot | Pengujian hak akses, transaksi bersamaan, kasus gagal, tampilan ponsel, dan uji operasional bersama mitra |
-
-Durasi serta pembagian tugas menunggu jumlah anggota tim dan tenggat proyek. Tahap 3 merupakan fondasi transaksi; cakupan MVP lengkap baru selesai setelah tahap 5.
-
-## 13. Skenario penerimaan utama
-
-1. Customer baru mendapat rekomendasi, memesan satu origin baru, membayar, dan mengambil pesanan; hasilnya satu stamp dan 40 poin sesuai angka prototipe.
-2. Customer membeli origin yang sama lagi; jumlah stamp tetap, riwayat bertambah, dan mendapat 10 poin.
-3. Satu pesanan berisi dua origin baru; mendapat dua stamp dan 70 poin.
-4. Customer memakai reward lalu membatalkan pesanan yang masih Masuk dan belum dibayar; poin dikembalikan satu kali dan tidak ada stamp baru.
-5. Dua permintaan checkout mencoba menukarkan saldo yang hanya cukup untuk satu reward; hanya satu penukaran berhasil.
-6. Dua staf menyelesaikan pesanan yang sama; poin, pembayaran, dan stamp tidak terduplikasi.
-7. Harga atau ketersediaan berubah setelah item masuk keranjang; checkout meminta penyesuaian yang jelas, tanpa mengubah histori pesanan sebelumnya.
-8. Customer mencoba membuka pesanan customer lain atau mengubah status pesanan sendiri; akses ditolak.
-9. Semua menu habis atau kedai tutup; katalog tetap dapat dilihat dengan pesan yang jelas dan pesanan baru tidak diterima.
-10. Pesanan belum dibayar mencoba dipindahkan ke Selesai; sistem menolak dan tidak memberikan poin atau stamp.
-
-## 14. Risiko dan pertanyaan untuk mitra
-
-| Hal yang belum pasti | Risiko | Keputusan yang diperlukan |
-| --- | --- | --- |
-| Nama resmi, identitas visual, dan izin materi | Website memakai informasi yang tidak tepat | Konfirmasi ejaan Sarkawie, logo, foto, alamat, dan hak penggunaan |
-| Menu, origin, blend, dan profil rasa | Rekomendasi dan passport menyesatkan | Daftar menu nyata, atribut rasa, pemetaan origin, aturan blend |
-| Pembayaran setelah pemesanan | Pesanan fiktif/no-show dan bahan terbuang | Apakah pembayaran di kedai dapat diterima; kapan barista mulai membuat kopi |
-| Pembatalan/refund/koreksi pembayaran | Operasional tidak tercakup penuh | Kebijakan pemilik dan kebutuhan perluasan sebelum peluncuran nyata |
-| Nominal poin dan diskon | Reward terlalu mahal bagi bisnis | Biaya poin, nilai reward, minimum belanja bila diperlukan, dan kebijakan kedaluwarsa |
-| Pergantian origin musiman | Katalog dan koleksi berubah | Origin dinonaktifkan dari penjualan tetapi stamp lama tetap disimpan |
-| Pengambilan dan kapasitas antrean | Pelanggan mengira ada jaminan waktu | Komunikasi waktu tunggu dan apakah slot pre-order diperlukan |
-| Pengelola operasional | Status atau katalog tidak diperbarui | Siapa admin, siapa pencatat pembayaran, dan siapa memperbarui ketersediaan |
-| Kebutuhan akademik dan deadline | Scope melebihi kapasitas tim | Rubrik tugas, anggota tim, tenggat, dan fitur wajib demonstrasi |
-
-Dokumen ini menjadi dasar diskusi dan implementasi setelah asumsi prioritas dikonfirmasi. Perubahan pada alur pembayaran, status akhir, reward, dan definisi origin perlu diperbarui di PRD sebelum mengubah implementasinya.
+Susun proposal dengan format rapi: judul, latar belakang, rumusan masalah, tujuan, manfaat, ruang lingkup, analisis kebutuhan, rancangan solusi, alur sistem, rencana implementasi, pengujian/evaluasi, risiko dan asumsi, lalu penutup. Jika informasi dari PRD belum cukup untuk bagian tertentu, buat bagian “Perlu dikonfirmasi” alih-alih mengisi dengan fakta rekaan.
+```
